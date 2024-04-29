@@ -24,6 +24,17 @@ To add this app to your omega build:
 
 And I think that should be all.
 
+## How to use
+
+- move: arrows
+- zoom: +
+- zoom: -
+- precisions modes: 1-9 (changes drawn tile size)
+- increase move step: ×
+- decrease move step: ÷
+
+## Python script
+
 I also made a python script that does about the same thing as this app (way slower tho):
 
 ```py
