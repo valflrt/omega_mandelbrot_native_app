@@ -40,28 +40,20 @@ namespace Mandelbrot
     double c_x = (0.1 * tileSize - width / 2) * zoom + center_x;
     double c_y = (0.1 * tileSize - height / 2) * zoom + center_y;
 
-    for (int x = 0; x < max_x + 1; x++)
+    for (int y = 0; y < max_y + 1; y++)
     {
-      int k = 1;
-      int prev = 0;
-      for (int y = 0; y < max_y + 1; y++)
+      ctx->drawLine(KDPoint(0, y * tileSize), KDPoint(width, y * tileSize), KDColorWhite);
+      KDColor line[width * tileSize + 1];
+      for (int x = 0; x < max_x + 1; x++)
       {
         std::complex<double> c(x * tileSize * zoom + c_x, y * tileSize * zoom + c_y);
         int v = getMandelbrotValue(c);
-        if (y == 0)
-          prev = v;
-        if (prev != v || y >= max_y)
-        {
-          KDColor color = getColor((float)prev / (float)max_iter);
-          ctx->fillRect(KDRect(x * tileSize, (y - k) * tileSize, tileSize, tileSize * (k + 1)), color);
-          prev = v;
-          k = 1;
-        }
-        else
-        {
-          k += 1;
-        }
+        KDColor color = getColor((float)v / (float)max_iter);
+        for (int i = 0; i < tileSize && x * tileSize + i < width; i++)
+          for (int j = 0; j < tileSize && y * tileSize + j < height; j++)
+            line[x * tileSize + j * width + i] = color;
       }
+      ctx->fillRectWithPixels(KDRect(0, y * tileSize, width, tileSize), line, nullptr);
     }
   }
 
