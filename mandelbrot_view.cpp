@@ -42,7 +42,8 @@ namespace Mandelbrot
 
     for (int y = 0; y < max_y + 1; y++)
     {
-      ctx->drawLine(KDPoint(0, y * tileSize), KDPoint(width, y * tileSize), KDColorWhite);
+      if (tileSize <= 3)
+        ctx->drawLine(KDPoint(0, y * tileSize), KDPoint(width, y * tileSize), KDColorWhite);
       KDColor line[width * tileSize + 1];
       for (int x = 0; x < max_x + 1; x++)
       {
