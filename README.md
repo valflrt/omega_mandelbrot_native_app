@@ -4,23 +4,22 @@
 
 To add this app to your omega build:
 
-1. Add the contents of this repository to a directory called `mandelbrot` and put this directory in the `apps` directory.
-2. Add "mandelbrot" in `EPSILON_APPS` in `build/config.mak`:
+1. _(optional)_ Clone the omega repository using `https://github.com/Omega-Numworks/Omega.git`
+2. Copy the directory `mandelbrot` and to the `apps` directory the previously cloned omega directory.
+3. Add "mandelbrot" to `EPSILON_APPS` in `build/config.mak`:
 
    ```
-   EPSILON_APPS ?= calculation graph code statistics probability solver atomic sequence regression mandelbrot settings external
+   EPSILON_APPS ?= calculation rpn graph code statistics probability solver atomic sequence regression mandelbrot settings external
    ```
 
-   > please do not copy this line since I removed rpn from it and you might want to keep it
-
-3. Add "mandelbrot" to `apps/home/apps_layout.csv`
+4. Add "mandelbrot" to `apps/home/apps_layout.csv`
 
    ```
    Default,calculation,rpn,graph,code,statistics,probability,solver,atomic,sequence,regression,mandelbrot,settings
    HidePython,calculation,rpn,graph,code,statistics,probability,solver,atomic,sequence,regression,mandelbrot,settings
    ```
 
-4. Add `mandelbrot_icon.png` or another icon you made to the directory of the selected theme (example: `themes/themes/local/omega_light`).
+5. Add `mandelbrot_icon.png` or another icon you made to the directory of the selected theme (example: `themes/themes/local/omega_light`).
 
 And I think that should be all.
 
